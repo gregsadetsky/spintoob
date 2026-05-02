@@ -1,0 +1,91 @@
+/* deeply brutalist. 1990. */
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background: #c0c0c0;
+  color: #000;
+  margin: 16px;
+  max-width: 720px;
+}
+
+h1 {
+  font-size: 48px;
+  margin: 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #000;
+  margin: 12px 0;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"] {
+  font-family: monospace;
+  font-size: 16px;
+  padding: 2px;
+  border: 2px inset #808080;
+}
+
+a:link    { color: #0000ee; }
+a:visited { color: #551a8b; }
+
+#hero {
+  display: block;
+  border: 2px solid #000;
+}
+
+/* spin view: full viewport, ignore body's max-width so the player can be big and centered. */
+
+#spin-view {
+  position: fixed;
+  inset: 0;
+  background: #c0c0c0;
+  margin: 0;
+  padding: 0;
+}
+
+#spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 450px;
+  /* center via negative margins so the transform can be used purely for rotation. */
+  margin-top: -225px;
+  margin-left: -400px;
+  transform-origin: 50% 50%;
+  animation-name: spintoob-spin;
+  animation-duration: var(--spin-duration, 2s);
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: var(--spin-direction, normal);
+}
+
+#spinner iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#spinner.paused {
+  animation: none;
+}
+
+@keyframes spintoob-spin {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+#back-link-wrap {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  margin: 0;
+}
