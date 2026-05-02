@@ -97,9 +97,13 @@ backLink.addEventListener('click', (e) => {
   location.hash = '';
 });
 
-document.getElementById('example-link').addEventListener('click', (e) => {
-  e.preventDefault();
-  document.getElementById('url').value = 'https://www.youtube.com/watch?v=rrxk2WzrE14';
+document.querySelectorAll('.example-link').forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('url').value = `https://www.youtube.com/watch?v=${link.dataset.id}`;
+    document.getElementById('speed').value = link.dataset.speed;
+    form.requestSubmit();
+  });
 });
 
 window.addEventListener('hashchange', renderRoute);
